@@ -12,7 +12,9 @@ export async function getProducts({
     const response = await fetch(`${FAKE_STORE.PRODUCTS}?limit=${limit}&_ort=${sort}`);
     const data = await response.json();
     return data as Product[];
-  } catch (error) {}
+  } catch (error) {
+    return [];
+  }
 }
 
 export async function getProduct(id: number) {
@@ -20,7 +22,9 @@ export async function getProduct(id: number) {
     const response = await fetch(`${FAKE_STORE.PRODUCTS}/${id}`);
     const data = await response.json();
     return data as Product;
-  } catch (error) {}
+  } catch (error) {
+    return null;
+  }
 }
 
 export async function getCategories() {
@@ -28,7 +32,9 @@ export async function getCategories() {
     const response = await fetch(FAKE_STORE.CATEGORIES);
     const data = await response.json();
     return data as Category[];
-  } catch (error) {}
+  } catch (error) {
+    return [];
+  }
 }
 
 export async function getCategoryProducts(category: Category) {
@@ -36,7 +42,9 @@ export async function getCategoryProducts(category: Category) {
     const response = await fetch(`${FAKE_STORE.CATEGORIES}/${category}`);
     const data = await response.json();
     return data as Product[];
-  } catch (error) {}
+  } catch (error) {
+    return [];
+  }
 }
 
 export async function createProduct(product: Omit<Product, "id">) {
@@ -47,7 +55,9 @@ export async function createProduct(product: Omit<Product, "id">) {
     });
     const data = await response.json();
     return data as Product;
-  } catch (error) {}
+  } catch (error) {
+    return null;
+  }
 }
 
 export async function updateProduct(product: Product) {
@@ -58,7 +68,9 @@ export async function updateProduct(product: Product) {
     });
     const data = await response.json();
     return data as Product;
-  } catch (error) {}
+  } catch (error) {
+    return null;
+  }
 }
 
 export async function deleteProduct(id: number) {
@@ -68,5 +80,7 @@ export async function deleteProduct(id: number) {
     });
     const data = await response.json();
     return data as Product;
-  } catch (error) {}
+  } catch (error) {
+    return null;
+  }
 }
