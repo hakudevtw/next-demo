@@ -1,11 +1,11 @@
 import { ProductCard, ProductCardSkeleton } from "./product-card";
-import { getProducts } from "@/services/fake-store.service";
+import type { Product } from "@/services/fake-store.type";
 
-interface Props {}
+interface Props {
+  products: Product[];
+}
 
-export const ProductList = async ({}: Props) => {
-  const products = await getProducts();
-
+export const ProductList = async ({ products }: Props) => {
   if (!products) return null;
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

@@ -1,12 +1,16 @@
 import { Suspense } from "react";
-import { ProductList, ProductListSkeleton } from "@/features/products";
+import { ProductListServer, ProductListClient, ProductListSkeleton } from "@/features/products";
 
-export default async function Page() {
+interface Props {
+  searchParams: Promise<{ isClient: string }>;
+}
+
+export default async function Page({ searchParams }: Props) {
+  const { isClient } = await searchParams;
+  if (isClient === "true") return <ProductListClient />;
   return (
-    <>
-      <Suspense fallback={<ProductListSkeleton />}>
-        <ProductList />
-      </Suspense>
-    </>
+    <Suspense fallback={<ProductListSkeleton />}>
+      <ProductListServer />
+    </Suspense>
   );
 }
