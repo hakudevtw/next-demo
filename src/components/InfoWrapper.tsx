@@ -3,7 +3,7 @@ import type { PropsWithChildren, ComponentProps } from "react";
 
 interface Props extends ComponentProps<"div"> {}
 
-export default function Block({ children, className, ...props }: PropsWithChildren<Props>) {
+export default function InfoWrapper({ children, className, ...props }: PropsWithChildren<Props>) {
   const isClient = typeof window !== "undefined";
 
   return (
