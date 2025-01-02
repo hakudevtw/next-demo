@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props) => {
-  const { title, price, image } = product;
+  const { title, price, images } = product;
   return (
     <Card>
       <CardHeader>
@@ -23,7 +23,7 @@ export const ProductCard = ({ product }: Props) => {
         <CardDescription>${price.toFixed(2)}</CardDescription>
       </CardHeader>
       <CardContent className="h-48">
-        <img src={image} alt={title} className="h-full w-full object-cover rounded" />
+        <img src={images[0]} alt={title} className="h-full w-full object-cover rounded" />
       </CardContent>
       <CardFooter className="flex items-center justify-center">
         <Button asChild>
