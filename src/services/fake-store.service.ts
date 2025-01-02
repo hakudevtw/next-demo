@@ -1,5 +1,5 @@
 import { FAKE_STORE } from "@/constants/endpoints";
-import type { Product, Category } from "@/types/fake-store.type";
+import type { Product, Category } from "@/services/fake-store.type";
 
 export async function getProducts({
   limit = 10,

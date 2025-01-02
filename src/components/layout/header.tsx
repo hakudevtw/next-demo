@@ -10,8 +10,8 @@ const Header = () => {
 
         <ul className="flex space-x-6 text-gray-700">
           <li>
-            <Link href="/fake-store" className="hover:text-blue-500 transition-colors">
-              Fake Store
+            <Link href="/products" className="hover:text-blue-500 transition-colors">
+              Products
             </Link>
           </li>
         </ul>
