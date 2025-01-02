@@ -23,7 +23,13 @@ export const ProductCard = ({ product }: Props) => {
         <CardDescription>${price.toFixed(2)}</CardDescription>
       </CardHeader>
       <CardContent className="h-48">
-        <img src={images[0]} alt={title} className="h-full w-full object-cover rounded" />
+        <img
+          src={images[0]}
+          alt={title}
+          width={1080}
+          height={1080}
+          className="h-full w-full object-cover rounded"
+        />
       </CardContent>
       <CardFooter className="flex items-center justify-center">
         <Button asChild>

@@ -8,7 +8,7 @@ import type {
 } from "@/services/fake-store/fake-store.type";
 import { toStringValues } from "@/utils/type-transform";
 
-interface GetProductsParams {
+export interface GetProductsParams {
   limit?: number;
   offset?: number;
   title?: string;
