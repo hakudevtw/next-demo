@@ -9,10 +9,14 @@ export default function InfoWrapper({ children, className, ...props }: PropsWith
   return (
     <div
       title={isClient ? "Client" : "Server"}
-      className={cn({
-        "bg-blue-300": isClient,
-        "bg-red-300": !isClient,
-      })}
+      className={cn(
+        "border-2 rounded-md",
+        {
+          " border-blue-300": isClient,
+          "border-red-300": !isClient,
+        },
+        className
+      )}
       {...props}
     >
       {children}

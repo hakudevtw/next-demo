@@ -1,8 +1,20 @@
 "use client";
-import { ProductList } from "./product-list";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "@/services/fake-store.service";
+import { ProductList, ProductListSkeleton } from "./product-list";
 
-interface Props {}
+export const ProductListClient = () => {
+  const {
+    data: products,
+    isLoading,
+    isError,
+    isPending,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => getProducts(),
+  });
 
-export const ProductListClient = ({}: Props) => {
-  return <div>This is client side rendered</div>;
+  if (isError) return <div>Something went wrong...</div>;
+  if (isPending) return <ProductListSkeleton />;
+  return <ProductList products={products} />;
 };
