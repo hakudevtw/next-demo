@@ -25,7 +25,7 @@ export const ProductCard = ({ product }: Props) => {
       <CardContent className="h-48">
         <img src={image} alt={title} className="h-full w-full object-cover rounded" />
       </CardContent>
-      <CardFooter className="flex items-center justify-between">
+      <CardFooter className="flex items-center justify-center">
         <Button asChild>
           <Link href={`/products/${product.id}`}>View</Link>
         </Button>
