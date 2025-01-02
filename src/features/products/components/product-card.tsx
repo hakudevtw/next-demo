@@ -33,3 +33,17 @@ export const ProductCard = ({ product }: Props) => {
     </Card>
   );
 };
+
+export const ProductCardSkeleton = () => {
+  return (
+    <div className="animate-pulse">
+      <Card>
+        <CardHeader>
+          <CardTitle className="h-5 bg-gray-300 rounded-md"></CardTitle>
+          <div className="h-4 mt-2 bg-gray-300 rounded-md w-1/2"></div>
+        </CardHeader>
+        <CardContent className="h-48 bg-gray-300 rounded"></CardContent>
+      </Card>
+    </div>
+  );
+};

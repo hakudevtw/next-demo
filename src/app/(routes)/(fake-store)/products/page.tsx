@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { ProductList } from "@/features/products";
+import { ProductList, ProductListSkeleton } from "@/features/products";
 
 export default async function Page() {
   return (
     <>
-      <Suspense fallback="Loading products...">
+      <Suspense fallback={<ProductListSkeleton />}>
         <ProductList />
       </Suspense>
     </>
