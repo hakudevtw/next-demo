@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import type { Product } from "@/services/fake-store.type";
+import type { Product } from "@/services/fake-store/fake-store.type";
 
 interface Props {
   product: Product;

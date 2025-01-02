@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getProducts } from "@/services/fake-store.service";
+import { getProducts } from "@/services/fake-store/rest-api";
 import { ProductList, ProductListSkeleton } from "@/features/products";
 
 export default async function Page() {

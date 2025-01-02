@@ -1,5 +1,5 @@
 import { ProductCard, ProductCardSkeleton } from "./product-card";
-import type { Product } from "@/services/fake-store.type";
+import type { Product } from "@/services/fake-store/fake-store.type";
 
 interface Props {
   products: Product[];
