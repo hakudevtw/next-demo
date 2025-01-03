@@ -29,4 +29,12 @@ Sentry.init({
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
+
+  beforeSend(event) {
+    // remove all events from the Studio page (demo purposes)
+    if (event.type === undefined && event.request?.url?.includes("/studio")) {
+      return null;
+    }
+    return event;
+  },
 });
