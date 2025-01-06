@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { REST_ENDPOINTS } from "./constants";
 import type {
   Product,
@@ -7,6 +8,8 @@ import type {
   NewCategory,
 } from "@/services/fake-store/fake-store.type";
 import { toStringValues } from "@/utils/type-transform";
+import { Sen } from "next/font/google";
+import { url } from "inspector";
 
 export interface GetProductsParams {
   limit?: number;
@@ -20,14 +23,25 @@ export interface GetProductsParams {
 
 export async function getProducts(config: GetProductsParams = {}) {
   const searchParams = new URLSearchParams(toStringValues(config)).toString();
+  const endpoint = `${REST_ENDPOINTS.PRODUCTS}?${searchParams}`;
 
-  try {
-    const response = await fetch(`${REST_ENDPOINTS.PRODUCTS}?${searchParams}`);
-    const data = await response.json();
-    return data as Product[];
-  } catch (error) {
-    return [];
-  }
+  const result = await Sentry.startSpan({ name: "Get Products", op: "function" }, async (span) => {
+    try {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      return data as Product[];
+    } catch (error) {
+      Sentry.withScope((scope) => {
+        scope.setContext("endpoint", { url: endpoint });
+        Sentry.captureException(error);
+      });
+      return [];
+    } finally {
+      span.end();
+    }
+  });
+
+  return result;
 }
 
 export async function getProduct(id: Product["id"]) {
